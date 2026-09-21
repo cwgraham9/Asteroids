@@ -1,11 +1,12 @@
-import pygame
 import sys
-from constants import SCREEN_HEIGHT, SCREEN_WIDTH
-from logger import log_state
-from logger import log_event
-from player import Player
-from asteroidfield import AsteroidField
+
+import pygame
+
 from asteroid import Asteroid
+from asteroidfield import AsteroidField
+from constants import SCREEN_HEIGHT, SCREEN_WIDTH
+from logger import log_event, log_state
+from player import Player
 from shot import Shot
 
 
@@ -20,14 +21,13 @@ def main() -> None:
     Shot.containers = (shots, updatable, drawable)
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
-    AsteroidField.containers = (updatable,) 
+    AsteroidField.containers = (updatable,)
     AsteroidField()
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     dt = 0.0
 
     while True:
         log_state()
-       
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
